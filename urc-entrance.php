@@ -32,7 +32,7 @@ include_once( 'urc-entrance-bar.php' );
 
 
 // SIDEBAR | SHOW LOGGED IN DETAILS
-add_action( 'genesis_before_sidebar_widget_area', 'urc_leaky_login_options', 1 );
+add_action( 'genesis_before_content', 'urc_leaky_login_options', 1 );
 function urc_leaky_login_options() {
 
     global $post;
@@ -40,7 +40,7 @@ function urc_leaky_login_options() {
     if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
         // opening tags
-        ?><div class="widget_text widget"><?php
+        ?><aside class="module loginfo"><?php
 
         if( is_user_logged_in() ) :
 
@@ -49,19 +49,24 @@ function urc_leaky_login_options() {
             // set URL with WP NONCE
             $logout = wp_nonce_url( get_site_url().'/wp-login.php?action=logout' );
 
-            echo '<div><a href="'.$logout.'">Logout</a> | <a href="'.get_site_url().'/profile">Edit Profile</a></div>
-                  <div>Username: '.$current_user->user_login.'</div>
-                  <div>Name: '.$current_user->display_name.'</div>
-                  <div><a href="'.get_site_url().'/profile">Change Password</a></div>';
+            echo    '<div class="widget">
+                    <h3 class="widgettitle widget-title">Members Area</h3>
+                    <div class="items text-sm"><a href="'.get_site_url().'/profile">Edit Profile</a> | <a href="'.$logout.'">Logout</a></div>
+                    <div class="text-xs margin-top">Username</div>
+                    <div>'.$current_user->user_login.'</div>
+                    <div class="text-xs margin-top">Info</div>
+                    <div class="text-sm">'.$current_user->display_name.'</div>
+                    <div class="text-sm"><a href="'.get_site_url().'/profile">Change Password</a></div>
+                    </div>';
 
         else:
 
-            echo '<a href="'.get_site_url().'/login">Login</a> | <a href="'.get_site_url().'/wp-login.php?action=lostpassword">Forgot Password</a>';
+            // echo '<a href="'.get_site_url().'/login">Login</a> | <a href="'.get_site_url().'/wp-login.php?action=lostpassword">Forgot Password</a>';
 
         endif;
 
         // closing tags
-        ?></div><?php
+        ?></aside><?php
 
     endif;
 
@@ -69,7 +74,7 @@ function urc_leaky_login_options() {
 
 
 // SIDEBAR | MAIN SUBSCRIBE FORM
-add_action( 'genesis_before_sidebar_widget_area', 'urc_leaky_validation', 2 );
+add_action( 'genesis_before_content', 'urc_leaky_validation', 2 );
 function urc_leaky_validation() {
 
     /**
@@ -104,7 +109,9 @@ function urc_leaky_validation() {
     }
 
     if( !empty( $outs ) )
-        echo '<div class="item-subscribe widget_text widget">'.$outs.'</div>';
+        echo    '<aside class="module subscribe">
+                    <div class="item-subscribe widget_text widget">'.$outs.'</div>
+                </aside>';
 
 }
 

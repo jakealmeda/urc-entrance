@@ -47,10 +47,10 @@ function urc_leaky_logged_in() {
 
     if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
-        // opening tags
-        ?><aside class="module loginfo" style="background-color:gray;"><?php
-
         if( is_user_logged_in() ) :
+
+            // opening tags
+            ?><aside class="module loginfo"><?php
 
             global $current_user; wp_get_current_user();
 
@@ -67,14 +67,10 @@ function urc_leaky_logged_in() {
                     <div class="text-sm"><a href="'.get_site_url().'/profile">Change Password</a></div>
                     </div>';
 
-        else:
-
-            // echo '<a href="'.get_site_url().'/login">Login</a> | <a href="'.get_site_url().'/wp-login.php?action=lostpassword">Forgot Password</a>';
+            // closing tags
+            ?></aside><?php
 
         endif;
-
-        // closing tags
-        ?></aside><?php
 
     endif;
 

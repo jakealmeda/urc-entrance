@@ -31,10 +31,17 @@ include_once( 'lib/urc-leaky-regform.php' );
 //include_once( 'urc-entrance-bar.php' );
 
 
-// SIDEBAR | SHOW LOGGED IN DETAILS
-//add_action( 'genesis_before_content', 'urc_leaky_login_options', 20 );
-add_action( 'genesis_before_content_sidebar_wrap', 'urc_leaky_login_options', 20 );
-function urc_leaky_login_options() {
+$priority = 30;
+
+// LOGGED OUT
+add_action( 'genesis_before_content', 'urc_leaky_logged_out', $priority );
+// LOGGED IN
+add_action( 'genesis_before_content', 'urc_leaky_logged_in', $priority );
+
+
+
+// SIDEBAR | SHOW LOGGED IN DETAILS | LOGGED IN
+function urc_leaky_logged_in() {
 
     global $post;
 
@@ -74,9 +81,8 @@ function urc_leaky_login_options() {
 }
 
 
-// SIDEBAR | MAIN SUBSCRIBE FORM
-add_action( 'genesis_before_content', 'urc_leaky_validation', 2 );
-function urc_leaky_validation() {
+// SIDEBAR | MAIN SUBSCRIBE FORM | LOGGED OUT
+function urc_leaky_logged_out() {
 
     /**
      * Custom codes from here...

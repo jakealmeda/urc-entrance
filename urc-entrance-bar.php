@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-//add_action( 'genesis_before_content', 'urc_leaky_validation_bar' );
+add_action( 'genesis_before_content', 'urc_leaky_validation_bar' );
 //add_action( 'genesis_before_loop', 'urc_leaky_validation_bar' );
 function urc_leaky_validation_bar() {
 

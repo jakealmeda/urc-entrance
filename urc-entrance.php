@@ -28,11 +28,12 @@ function hide_from_these_pages() {
 
 // INCLUDE LEAKY'S FUNCTION
 include_once( 'lib/urc-leaky-regform.php' );
-include_once( 'urc-entrance-bar.php' );
+//include_once( 'urc-entrance-bar.php' );
 
 
 // SIDEBAR | SHOW LOGGED IN DETAILS
-add_action( 'genesis_before_content', 'urc_leaky_login_options', 1 );
+//add_action( 'genesis_before_content', 'urc_leaky_login_options', 20 );
+add_action( 'genesis_before_content_sidebar_wrap', 'urc_leaky_login_options', 20 );
 function urc_leaky_login_options() {
 
     global $post;
@@ -40,7 +41,7 @@ function urc_leaky_login_options() {
     if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
         // opening tags
-        ?><aside class="module loginfo"><?php
+        ?><aside class="module loginfo" style="background-color:gray;"><?php
 
         if( is_user_logged_in() ) :
 

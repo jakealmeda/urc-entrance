@@ -80,42 +80,43 @@ function urc_leaky_logged_in() {
 // SIDEBAR | MAIN SUBSCRIBE FORM | LOGGED OUT
 function urc_leaky_logged_out() {
 
-    /**
-     * Custom codes from here...
-     */
+    global $post;
 
-    if( !is_user_logged_in() ) {
+    if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
-        /*global $post;
+        if( !is_user_logged_in() ) {
 
-        if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
+            /*global $post;
 
-            $outs = do_shortcode( '[leaky_paywall_profile]' );
+            if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
-        endif;
+                $outs = do_shortcode( '[leaky_paywall_profile]' );
 
-    } else {*/
+            endif;
 
-        $forms = do_shortcode( '[urc_leaky_paywall_register_form level_id=0]' );
+        } else {*/
 
-        $outs = '<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
-                        <div class="photo"></div>
-                        <div class="title"><span class="fontsize-med">Enter Your Name &amp; Email Below for Instant Access:</span></div>
+            $forms = do_shortcode( '[urc_leaky_paywall_register_form level_id=0]' );
 
-                '.$forms.'
+            $outs = '<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
+                            <div class="photo"></div>
+                            <div class="title"><span class="fontsize-med">Enter Your Name &amp; Email Below for Instant Access:</span></div>
 
-                <div class="margin-bottom" style="text-align:center;">Already A Member? <a href="'.get_site_url().'/login">Click Here</a> To Login</div>
+                    '.$forms.'
+
+                    <div class="margin-bottom" style="text-align:center;">Already A Member? <a href="'.get_site_url().'/login">Click Here</a> To Login</div>
+            
+                    <div class="disclaimer">Enter your name &amp; email and password in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you subscribe, you will gain access to ALL articles behind the paywall. You will also be redirected to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser! You’ll also get my best pickup, dating, relationship &amp; life success secrets &amp; strategies in my FREE newsletter. All information is 100% confidential. “Employ your time in improving yourself by other men’s writings, so that you shall gain easily what others have labored hard for.” ~ Socrates. “The man who doesn’t read good books has no advantage over the man who can’t read them.” ~ Mark Twain</div>
+                    ';
+
+        }
+
+        if( !empty( $outs ) )
+            echo    '<aside class="module subscribe">
+                        <div class="item-subscribe widget_text widget">'.$outs.'</div>
+                    </aside>';
         
-                <div class="disclaimer">Enter your name &amp; email and password in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you subscribe, you will gain access to ALL articles behind the paywall. You will also be redirected to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser! You’ll also get my best pickup, dating, relationship &amp; life success secrets &amp; strategies in my FREE newsletter. All information is 100% confidential. “Employ your time in improving yourself by other men’s writings, so that you shall gain easily what others have labored hard for.” ~ Socrates. “The man who doesn’t read good books has no advantage over the man who can’t read them.” ~ Mark Twain</div>
-                ';
-
-    }
-
-    if( !empty( $outs ) )
-        echo    '<aside class="module subscribe">
-                    <div class="item-subscribe widget_text widget">'.$outs.'</div>
-                </aside>';
-
+    endif;
 }
 
 

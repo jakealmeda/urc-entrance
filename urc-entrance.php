@@ -92,8 +92,8 @@ function urc_mb_logged_out() {
                 Email (will also be username)
                 Password
             */
-
-            $forms = do_shortcode( '[mepr-membership-registration-form id="56841"]' );
+            //56841
+            $forms = do_shortcode( '[mepr-membership-registration-form id="57276"]' );
 
             $outs = '<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
                             <div class="photo"></div>

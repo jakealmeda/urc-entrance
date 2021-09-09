@@ -35,7 +35,7 @@ $priority = 30;
 
 // LOGGED OUT
 //add_action( 'genesis_before_content', 'urc_mb_logged_out', $priority );
-add_action( 'genesis_before_sidebar_widget_area', 'urc_mb_logged_out', $priority );
+add_action( 'genesis_before_content', 'urc_mb_logged_out', $priority );
 // LOGGED IN
 add_action( 'genesis_before_content', 'urc_mb_logged_in', $priority );
 

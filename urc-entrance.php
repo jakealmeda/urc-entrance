@@ -60,14 +60,13 @@ function urc_mb_logged_in() {
 
             echo    '<div class="widget">
                     <h3 class="widgettitle widget-title">Members Area</h3>
-                    <div class="items text-sm"><a href="'.get_site_url().'/profile">Edit Profile</a> | <a href="'.$logout.'">Logout</a></div>
+                    <div class="items text-sm"><a href="'.get_site_url().'/account">Account</a> | <a href="'.$logout.'">Logout</a></div>
                     <div class="text-xs margin-top">Username</div>
                     <div>'.$current_user->user_login.'</div>
                     <div class="text-xs margin-top">Info</div>
                     <div class="text-sm">'.$current_user->display_name.'</div>
-                    <div class="text-sm"><a href="'.get_site_url().'/profile">Change Password</a></div>
+                    <div class="text-sm"><a href="'.get_site_url().'/account?action=newpassword">Change Password</a></div>
                     </div>';
-
             // closing tags
             ?></aside><?php
 

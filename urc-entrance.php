@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: URC Entrance
- * Description: Extends the Leaky Paywall plugin and use a custom registration form.
- * Version: 1.0
+ * Description: Extends the MemberPress plugin and customize its registration form.
+ * Version: 1.1
  * Author: Jake Almeda
  * Author URI: http://smarterwebpackages.com/
  * Network: true
@@ -27,21 +27,22 @@ function hide_from_these_pages() {
 
 
 // INCLUDE LEAKY'S FUNCTION
-include_once( 'lib/urc-leaky-regform.php' );
+//include_once( 'lib/urc-leaky-regform.php' );
 //include_once( 'urc-entrance-bar.php' );
 
 
 $priority = 30;
 
 // LOGGED OUT
-add_action( 'genesis_before_content', 'urc_leaky_logged_out', $priority );
+//add_action( 'genesis_before_content', 'urc_mb_logged_out', $priority );
+add_action( 'genesis_before_sidebar_widget_area', 'urc_mb_logged_out', $priority );
 // LOGGED IN
-add_action( 'genesis_before_content', 'urc_leaky_logged_in', $priority );
+add_action( 'genesis_before_content', 'urc_mb_logged_in', $priority );
 
 
 
 // SIDEBAR | SHOW LOGGED IN DETAILS | LOGGED IN
-function urc_leaky_logged_in() {
+function urc_mb_logged_in() {
 
     global $post;
 
@@ -78,7 +79,7 @@ function urc_leaky_logged_in() {
 
 
 // SIDEBAR | MAIN SUBSCRIBE FORM | LOGGED OUT
-function urc_leaky_logged_out() {
+function urc_mb_logged_out() {
 
     global $post;
 
@@ -86,17 +87,13 @@ function urc_leaky_logged_out() {
 
         if( !is_user_logged_in() ) {
 
-            /*global $post;
+            /*
+                First Name (will be called Name)
+                Email (will also be username)
+                Password
+            */
 
-            if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
-
-                $outs = do_shortcode( '[leaky_paywall_profile]' );
-
-            endif;
-
-        } else {*/
-
-            $forms = do_shortcode( '[urc_leaky_paywall_register_form level_id=0]' );
+            $forms = do_shortcode( '[mepr-membership-registration-form id="56841"]' );
 
             $outs = '<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
                             <div class="photo"></div>

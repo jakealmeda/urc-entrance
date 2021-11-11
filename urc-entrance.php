@@ -2,7 +2,7 @@
 /**
  * Plugin Name: URC Entrance
  * Description: Extends the MemberPress plugin and customize its registration form.
- * Version: 1.1
+ * Version: 1.2
  * Author: Jake Almeda
  * Author URI: http://smarterwebpackages.com/
  * Network: true
@@ -21,6 +21,7 @@ function hide_from_these_pages() {
         'profile',
         'login',
         'register',
+        'plans',
     );
 
 }
@@ -60,7 +61,7 @@ function urc_mb_logged_in() {
 
             echo    '<div class="widget">
                     <h3 class="widgettitle widget-title">Members Area</h3>
-                    <div class="items text-sm"><a href="'.get_site_url().'/account">Account</a> | <a href="'.$logout.'">Logout</a></div>
+                    <div class="items text-sm"><a href="'.get_site_url().'/members-section">Members Section</a> | <a href="'.get_site_url().'/account">Account</a> | <a href="'.$logout.'">Logout</a></div>
                     <div class="text-xs margin-top">Username</div>
                     <div>'.$current_user->user_login.'</div>
                     <div class="text-xs margin-top">Info</div>

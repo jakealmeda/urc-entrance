@@ -2,7 +2,7 @@
 /**
  * Plugin Name: URC Entrance
  * Description: Extends the MemberPress plugin and customize its registration form.
- * Version: 1.2
+ * Version: 1.3
  * Author: Jake Almeda
  * Author URI: http://smarterwebpackages.com/
  * Network: true
@@ -93,7 +93,8 @@ function urc_mb_logged_out() {
                 Password
             */
             //56841
-            $forms = do_shortcode( '[mepr-membership-registration-form id="57276"]' );
+            //57276 for TEST
+            $forms = do_shortcode( '[mepr-membership-registration-form id="68387"]' );
 
             $outs = '<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
                             <div class="photo"></div>

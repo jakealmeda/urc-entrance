@@ -2,7 +2,7 @@
 /**
  * Plugin Name: URC Entrance
  * Description: Extends the MemberPress plugin and customize its registration form.
- * Version: 1.4
+ * Version: 1.4.1
  * Author: Jake Almeda
  * Author URI: http://smarterwebpackages.com/
  * Network: true
@@ -47,7 +47,7 @@ function urc_mb_logged_in() {
 
     global $post;
 
-    if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
+    if( is_object( $post ) && !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
         if( is_user_logged_in() ) :
 
@@ -83,7 +83,7 @@ function urc_mb_logged_out() {
 
     global $post;
 
-    if( !in_array( $post->post_name, hide_from_these_pages() ) ) :
+    if( is_object( $post ) && !in_array( $post->post_name, hide_from_these_pages() ) ) :
 
         if( !is_user_logged_in() ) {
 
@@ -105,22 +105,8 @@ function urc_mb_logged_out() {
                     <div class="margin-bottom" style="text-align:center;">Already A Member? <a href="'.get_site_url().'/login">Click Here</a> To Login</div>
             
                     <div class="disclaimer margin-bottom">Enter your name &amp; email and password in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you subscribe, you will gain access to ALL articles behind the paywall. You will also be redirected to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser! You’ll also get my best pickup, dating, relationship &amp; life success secrets &amp; strategies in my FREE newsletter. All information is 100% confidential. “Employ your time in improving yourself by other men’s writings, so that you shall gain easily what others have labored hard for.” ~ Socrates. “The man who doesn’t read good books has no advantage over the man who can’t read them.” ~ Mark Twain</div>
-
-                    <div>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0947746501358966"
-                         crossorigin="anonymous"></script>
-                    <!-- Page & Post Article Body Resposive Ad -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-0947746501358966"
-                         data-ad-slot="7597430493"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                    </div>
-                    ';
+                    
+                    '.urc_actual_gooads();
 
         }
 
@@ -133,5 +119,40 @@ function urc_mb_logged_out() {
 }
 
 
+function urc_actual_gooads() {
 
+    return '<div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0947746501358966"
+                     crossorigin="anonymous"></script>
+                <!-- Page & Post Article Body Resposive Ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-0947746501358966"
+                     data-ad-slot="7597430493"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>';
+
+}
+
+
+add_action( 'genesis_before_content', 'urc_display_gooads', $priority );
+function urc_display_gooads() {
+
+    global $post;
+
+    $hide_in_pages = array(
+        'freeebook',
+    );
+
+    if( is_object( $post ) && !in_array( $post->post_name, $hide_in_pages ) ) :
+
+        echo '<div>'.urc_actual_gooads().'</div>';
+
+    endif;
+
+}
 

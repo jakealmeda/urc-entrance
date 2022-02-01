@@ -145,7 +145,7 @@ function urc_display_gooads() {
     global $post;
 
     $hide_in_pages = array(
-        'freeebook',
+        'free-ebook',
     );
 
     if( is_object( $post ) && !in_array( $post->post_name, $hide_in_pages ) ) :
